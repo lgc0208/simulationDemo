@@ -1,4 +1,4 @@
-/**
+﻿/**
 * @file     main.cpp
 * @brief    QT 程序运行主函数
 * @details  主要包含主窗口界面的展示函数
@@ -17,7 +17,6 @@
 **********************************************************************************
 */
 
-#pragma execution_character_set("utf-8")
 #include "mainwindow.h"
 
 #include <QApplication>
