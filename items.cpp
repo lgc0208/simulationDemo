@@ -14,6 +14,7 @@
 * <table>
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>增加器件计算函数
 * </table>
 *
 **********************************************************************************
@@ -128,4 +129,21 @@ QVariant Items::itemChange(GraphicsItemChange change, const QVariant &value)
         }
     }
     return value;
+}
+
+/**
+ * @brief Items::calculateResult    根据不同的项进行不同的计算
+ * @param myItemType    ItemType
+ * @param inputNum      输入值double
+ * @return
+ */
+double Items::calculateResult(ItemType myItemType, double inputNum)
+{
+    double outputNum = 0.0;
+    if( myItemType == test)
+    {
+        outputNum = inputNum * inputNum;
+    }
+    this->outputNum = outputNum;
+    return outputNum;
 }

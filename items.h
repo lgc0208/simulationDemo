@@ -12,6 +12,7 @@
 * <table>
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>增加器件计算函数
 * </table>
 *
 **********************************************************************************
@@ -55,6 +56,11 @@ public:
     void addArrow(Arrow *arrow);
     QPixmap image() const;  // 将可选择的项绘制到 QPixmap 上
     int type() const override { return Type;}
+
+    //  器件具体功能实现
+    double inputNum = 0;
+    double outputNum = 0;
+    double calculateResult(ItemType myItemType, double inputNum);
 
 protected:
     void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
