@@ -1,10 +1,10 @@
-/**
+﻿/**
 * @file     stimulationScene.h
 * @brief    项目场景函数头文件
 * @details  主要包含stimulationScene类的声明
 * @author   LIN Guocheng
 * @date     2021-8-6
-* @version  V0.0.1
+* @version  0.0.1
 **********************************************************************************
 * @attention
 * QT版本：5.12.11

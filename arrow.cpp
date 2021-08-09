@@ -1,3 +1,25 @@
+﻿/**
+* @file     arrow.cpp
+* @brief    连接线函数文件
+* @details  主要包含两个项之间连接箭头的实现
+*           Arrow类是一个连接两个DiagramItems的图形项。它在其中一个项目上画一个箭头。
+*           项目需要绘制自己，重新实现图形场景使用的方法，以检查碰撞和选择。
+*           该类继承QGraphicsLine项，并绘制箭头，并使用它所连接的项移动。
+* @author   LIN Guocheng
+* @date     2021-8-9
+* @version  0.0.1
+**********************************************************************************
+* @attention
+* QT版本：5.12.11
+* @par 修改日志:
+* <table>
+* <tr><th>Date        <th>Version  <th>Author    <th>Description
+* <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* </table>
+*
+**********************************************************************************
+*/
+
 #include "arrow.h"
 
 #include <qmath.h>

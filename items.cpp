@@ -1,3 +1,24 @@
+﻿/**
+* @file     items.cpp
+* @brief    功能项函数文件
+* @details  主要包含功能项类的实现
+*           items表示StimulationScene中的功能项形状。
+*           它继承了QGraphicsPolygonItem，并为每个形状提供了一个多边形。枚举ItemType对每个流程图形状都有一个值。
+* @author   LIN Guocheng
+* @date     2021-8-9
+* @version  0.0.1
+**********************************************************************************
+* @attention
+* QT版本：5.12.11
+* @par 修改日志:
+* <table>
+* <tr><th>Date        <th>Version  <th>Author    <th>Description
+* <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* </table>
+*
+**********************************************************************************
+*/
+
 #include "items.h"
 #include "arrow.h"
 

@@ -1,7 +1,11 @@
 ﻿/**
 * @file     mainwindow.cpp
 * @brief    项目主函数文件
-* @details  主要包含主窗口界面的函数实现
+* @details  主要包含主窗口界面的函数实现，QT 的 MainWindow 类，代表了展示给用户的 GUI 界面。
+ *          MainWindow类在QMainWindow中创建和布局小部件。
+ *          类将输入从小部件转发到DiagramScene。
+ *          当图场景的文本项更改，或者一个图项或一个图文本项被插入到场景中时，它也会更新它的小部件。
+ *          这个类还从场景中删除项目，这决定了项目在相互重叠时的绘制顺序。
 * @author   LIN Guocheng
 * @date     2021-8-6
 * @version  V0.0.1
@@ -16,6 +20,7 @@
 *
 **********************************************************************************
 */
+
 #include "mainwindow.h"
 #include "arrow.h"
 #include "items.h"
@@ -25,13 +30,6 @@
 
 const int InsertTextButton = 10;
 
-/**
- * @brief QT 的 MainWindow 类，代表了展示给用户的 GUI 界面。
- *          MainWindow类在QMainWindow中创建和布局小部件。
- *          类将输入从小部件转发到DiagramScene。
- *          当图场景的文本项更改，或者一个图项或一个图文本项被插入到场景中时，它也会更新它的小部件。
- *          这个类还从场景中删除项目，这决定了项目在相互重叠时的绘制顺序。
- */
 MainWindow::MainWindow()
 {
     createActions();
@@ -62,7 +60,7 @@ MainWindow::MainWindow()
 }
 
 /**
- * @brief   根据不同的图标切换不同的运行模式
+ * @brief   MainWindow::buttonGroupClicked  根据不同的图标切换不同的运行模式
  * @param   id  点击的按键对应的id
  */
 void MainWindow::buttonGroupClicked(int id)
@@ -86,7 +84,7 @@ void MainWindow::buttonGroupClicked(int id)
 }
 
 /**
- * @brief 删除对应的项
+ * @brief MainWindow::deleteItem()  删除对应的项
  */
 void MainWindow::deleteItem()
 {
@@ -120,7 +118,7 @@ void MainWindow::pointerGroupClicked(int)
 }
 
 /**
- * @brief 将页面下方的项移到表面
+ * @brief MainWindow::bringToFront()    将页面下方的项移到表面
  */
 void MainWindow::bringToFront()
 {
@@ -141,7 +139,7 @@ void MainWindow::bringToFront()
 }
 
 /**
- * @brief 将页面表面的项移到下面
+ * @brief MainWindow::sendToBack()  将页面表面的项移到下面
  */
 void MainWindow::sendToBack()
 {
@@ -163,7 +161,7 @@ void MainWindow::sendToBack()
 
 
 /**
- * @brief 插入新的项
+ * @brief MainWindow::itemInserted  插入新的项
  * @param item    所需要插入的项
  */
 void MainWindow::itemInserted(Items *item)
@@ -174,7 +172,7 @@ void MainWindow::itemInserted(Items *item)
 }
 
 /**
- * @brief 插入文本框
+ * @brief MainWindow::textInserted  插入文本框
  * @param QGraphicsTextItem 格式化的文本项
  */
 void MainWindow::textInserted(QGraphicsTextItem *)
@@ -184,7 +182,7 @@ void MainWindow::textInserted(QGraphicsTextItem *)
 }
 
 /**
- * @brief 修改文本字体
+ * @brief MainWindow::currentFontChanged    修改文本字体
  * @param QFont    Qt控件文字属性
  */
 void MainWindow::currentFontChanged(const QFont &)
@@ -193,7 +191,7 @@ void MainWindow::currentFontChanged(const QFont &)
 }
 
 /**
- * @brief 修改文本字体大小-绑定事件
+ * @brief MainWindow::fontSizeChanged   修改文本字体大小-绑定事件
  * @param QString   字符串类型，表示大小
  */
 void MainWindow::fontSizeChanged(const QString &)
@@ -202,7 +200,7 @@ void MainWindow::fontSizeChanged(const QString &)
 }
 
 /**
- * @brief 更改界面显示比例
+ * @brief MainWindow::sceneScaleChanged 更改界面显示比例
  * @param  scale   表征页面显示比例的字符串
  */
 void MainWindow::sceneScaleChanged(const QString &scale)
@@ -215,7 +213,7 @@ void MainWindow::sceneScaleChanged(const QString &scale)
 }
 
 /**
- * @brief   修改字体形态
+ * @brief   MainWindow::handleFontChange    修改字体形态
  */
 void MainWindow::handleFontChange()
 {
@@ -230,7 +228,7 @@ void MainWindow::handleFontChange()
 
 
 /**
- * @brief 选择指定项
+ * @brief MainWindow::itemSelected  选择指定项
  * @param item      QGraphicsItem类型，表示所选择的项
  */
 void MainWindow::itemSelected(QGraphicsItem *item)
@@ -245,7 +243,7 @@ void MainWindow::itemSelected(QGraphicsItem *item)
 }
 
 /**
- * @brief 简介页面
+ * @brief MainWindow::about  简介页面
  */
 void MainWindow::about()
 {
@@ -253,7 +251,7 @@ void MainWindow::about()
 }
 
 /**
- * @brief 创建工具箱
+ * @brief MainWindow::createToolBox 创建工具箱
  */
 void MainWindow::createToolBox()
 {
@@ -291,11 +289,11 @@ void MainWindow::createToolBox()
     toolBox = new QToolBox;
     toolBox->setSizePolicy(QSizePolicy(QSizePolicy::Maximum, QSizePolicy::Ignored));    // 标准拉伸
     toolBox->setMinimumWidth(itemWidget->sizeHint().width());   // 设置最小宽度
-    toolBox->addItem(itemWidget, tr("基本流程图"));
+    toolBox->addItem(itemWidget, tr("测试控件栏"));
 }
 
 /**
- * @brief 创建顶部操作栏
+ * @brief MainWindow::createActions 创建顶部操作栏
  */
 void MainWindow::createActions()
 {
@@ -345,7 +343,7 @@ void MainWindow::createActions()
 }
 
 /**
- * @brief 创建菜单栏
+ * @brief MainWindow::createMenus   创建菜单栏
  */
 void MainWindow::createMenus()
 {
@@ -363,7 +361,7 @@ void MainWindow::createMenus()
 }
 
 /**
- * @brief 创建工作台
+ * @brief MainWindow::createToolbars    创建工作台
  */
 void MainWindow::createToolbars()
 {
@@ -423,7 +421,7 @@ void MainWindow::createToolbars()
 }
 
 /**
- * @brief 创建单元部件
+ * @brief MainWindow::createCellWidget  创建单元部件
  */
 QWidget *MainWindow::createCellWidget(const QString &text, Items::ItemType type)
 {

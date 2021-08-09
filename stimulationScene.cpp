@@ -1,3 +1,23 @@
+﻿/**
+* @file     stimulationScene.cpp
+* @brief    仿真场景实现函数文件
+* @details  主要包含仿真场景功能的实现
+*           StimulationScene类继承了QGraphicsScene，并添加了处理Items、arrow和TextItems的功能，以及由它的超类处理的项目。
+* @author   LIN Guocheng
+* @date     2021-8-9
+* @version  0.0.1
+**********************************************************************************
+* @attention
+* QT版本：5.12.11
+* @par 修改日志:
+* <table>
+* <tr><th>Date        <th>Version  <th>Author    <th>Description
+* <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* </table>
+*
+**********************************************************************************
+*/
+
 #include "stimulationScene.h"
 #include "arrow.h"
 #include <QTextCursor>
