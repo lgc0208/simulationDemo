@@ -13,6 +13,7 @@
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
 * <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>增加器件计算函数
+* <tr><td>2021/08/10  <td>0.0.3    <td>LIN Guocheng  <td>将器件输入输出值改为私有属性，并增加get/set函数
 * </table>
 *
 **********************************************************************************
@@ -58,8 +59,8 @@ public:
     int type() const override { return Type;}
 
     //  器件具体功能实现
-    double inputNum = 0;
-    double outputNum = 0;
+    void setInputNum(double inputNum);
+    double getOutputNum();
     double calculateResult(ItemType myItemType, double inputNum);
 
 protected:
@@ -67,6 +68,8 @@ protected:
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 private:
+    double inputNum = 0;
+    double outputNum = 0;
     ItemType myItemType;
     QPolygonF myPolygon;
     QMenu *myContextMenu;

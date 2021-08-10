@@ -22,6 +22,7 @@
 #define MAINWINDOW_H
 
 #include "items.h"
+#include "ioset.h"
 #include <QMainWindow>
 
 class StimulationScene;
@@ -63,6 +64,7 @@ private slots:
     void handleFontChange();
     void itemSelected(QGraphicsItem *item);
     void about();
+    void setGetValueWindow(); // 唤醒窗口
 
 private:
     void createToolBox();   // 创建工具箱
@@ -84,7 +86,7 @@ private:
     QAction *exitAction;
     QAction *addAction;
     QAction *deleteAction;
-    QAction *calculateAction;
+    QAction *setGetAction;
 
     QAction *toFrontAction;
     QAction *sendBackAction;
@@ -119,7 +121,8 @@ private:
     QButtonGroup    *buttonGroup;
     QButtonGroup    *pointerTypeGroup;
 
-
+    //  test
+    IOset       *setGetWindow;
 };
 
 #endif // MAINWINDOW_H

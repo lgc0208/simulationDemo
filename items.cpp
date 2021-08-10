@@ -15,6 +15,7 @@
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
 * <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>增加器件计算函数
+* <tr><td>2021/08/10  <td>0.0.3    <td>LIN Guocheng  <td>增加器件设置输入和显示输出函数
 * </table>
 *
 **********************************************************************************
@@ -35,11 +36,13 @@ Items::Items(ItemType itemType, QMenu *contextMenu, QGraphicsItem *parent)
     myContextMenu = contextMenu;
 
     switch (myItemType) {
+        //  测试栏
         case test:
-            myPolygon << QPointF(-100, -100) << QPointF(100, -100)
-                      << QPointF(100, 100) << QPointF(-100, 100)
-                      << QPointF(-100, -100);
+            myPolygon << QPointF(-30, -30) << QPointF(30, -30)
+                      << QPointF(30, 30) << QPointF(-30, 30)
+                      << QPointF(-30, -30);
             break;
+
         default:
             myPolygon << QPointF(-120, -80) << QPointF(-70, 80)
                       << QPointF(120, 80) << QPointF(70, -80)
@@ -146,4 +149,22 @@ double Items::calculateResult(ItemType myItemType, double inputNum)
     }
     this->outputNum = outputNum;
     return outputNum;
+}
+
+/**
+ * @brief Items::setInputNum    设置该Item的InputNum
+ * @param inputNum  double类型
+ */
+void Items::setInputNum(double inputNum)
+{
+    this->inputNum = inputNum;
+}
+
+/**
+ * @brief Items::getOutputNum   输出该Item的OutputNum
+ * @return 该Item的OutputNum
+ */
+double Items::getOutputNum()
+{
+    return this->outputNum;
 }

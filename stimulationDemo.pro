@@ -10,6 +10,7 @@ CONFIG += c++11
 
 SOURCES += \
     arrow.cpp \
+    ioset.cpp \
     items.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,6 +19,7 @@ SOURCES += \
 
 HEADERS += \
     arrow.h \
+    ioset.h \
     items.h \
     mainwindow.h \
     stimulationScene.h \
@@ -35,3 +37,6 @@ msvc {
 QMAKE_CFLAGS += /utf-8
 QMAKE_CXXFLAGS += /utf-8
 }
+
+FORMS += \
+    ioset.ui

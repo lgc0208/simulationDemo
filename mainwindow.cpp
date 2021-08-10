@@ -26,7 +26,11 @@
 #include "items.h"
 #include "stimulationScene.h"
 #include "textItem.h"
+#include "ioset.h"
 #include <QtWidgets>
+#include <QGraphicsSceneMouseEvent>
+#include <iostream>
+using namespace std;
 
 const int InsertTextButton = 10;
 
@@ -308,6 +312,11 @@ void MainWindow::createActions()
     sendBackAction->setStatusTip(tr("沉于底部"));   // 设定提示语
     connect(sendBackAction, SIGNAL(triggered()), this, SLOT(sendToBack()));
 
+    // test
+    setGetAction = new QAction(QIcon(":/images/delete.png"), tr("操作"), this);
+    setGetAction->setShortcut(tr("Ctrl+E"));
+    setGetAction->setStatusTip(tr("操作"));
+    connect(setGetAction, SIGNAL(triggered()), this, SLOT(setGetValueWindow()));
 
 
     deleteAction = new QAction(QIcon(":/images/delete.png"), tr("删除"), this);
@@ -355,6 +364,7 @@ void MainWindow::createMenus()
     itemMenu->addSeparator();
     itemMenu->addAction(toFrontAction);
     itemMenu->addAction(sendBackAction);
+    itemMenu->addAction(setGetAction);
 
     AboutMenu = menuBar()->addMenu(tr("帮助"));
     AboutMenu->addAction(aboutAction);
@@ -443,4 +453,18 @@ QWidget *MainWindow::createCellWidget(const QString &text, Items::ItemType type)
     widget->setLayout(layout);
 
     return widget;
+}
+
+
+//test
+void MainWindow::setGetValueWindow()
+{
+    setGetWindow = new IOset();
+    setGetWindow->show();
+    //item = qgraphicsitem_cast <Items *> (selectedItems().first());
+    //  遍历所有选择的项，如果为箭头，执行该部分代码
+
+    foreach (QGraphicsItem *item, scene->selectedItems()) {
+        std::cout << "item: " << std::endl;
+        }
 }

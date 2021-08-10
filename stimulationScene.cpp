@@ -180,8 +180,9 @@ void StimulationScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
             arrow->setZValue(-1000.0);
             addItem(arrow);
             arrow->updatePosition();
-            endItem->calculateResult(endItem->itemType(), 3.0); // 3为测试数
-            std::cout << endItem->itemType() << " " << endItem->outputNum << std::endl;
+            // test
+            endItem->calculateResult(endItem->itemType(), startItem->getOutputNum());
+            std::cout << endItem->itemType() << " " << endItem->getOutputNum() << std::endl;
         }
     }
     line = 0;
