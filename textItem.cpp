@@ -21,7 +21,7 @@
 */
 
 #include "textItem.h"
-#include "stimulationScene.h"
+#include "simulationScene.h"
 
 TextItem::TextItem(QGraphicsItem *parent)
     : QGraphicsTextItem(parent)

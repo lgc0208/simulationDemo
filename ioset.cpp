@@ -44,11 +44,20 @@ void IOset::on_SetInput_clicked()
 /**
  * @brief IOset::on_GetOutput_clicked   Get Output 按钮点击事件，将outputValue更新到标签栏
  * @param item  正在操作的item
- *//*
+ */
 void IOset::on_GetOutput_clicked()
 {
-    double outputValue = item.getOutputNum();
+    //double outputValue = item.getOutputNum();
+    bool ok;
+    QString tmpStr;
+    QString valueStr = ui->inputValue->text();  // 获取文本框内容
+    if(valueStr == NULL)
+            return;
+    double inputValue = valueStr.toDouble(&ok);
+
+    double outputValue = 2*inputValue;
+
     QString outputStr;
     ui->outputValue->setText(outputStr.setNum(outputValue));
-}*/
+}
 

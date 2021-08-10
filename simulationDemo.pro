@@ -14,7 +14,7 @@ SOURCES += \
     items.cpp \
     main.cpp \
     mainwindow.cpp \
-    stimulationScene.cpp \
+    simulationScene.cpp \
     textItem.cpp
 
 HEADERS += \
@@ -22,7 +22,7 @@ HEADERS += \
     ioset.h \
     items.h \
     mainwindow.h \
-    stimulationScene.h \
+    simulationScene.h \
     textItem.h
 
 # Default rules for deployment.

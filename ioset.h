@@ -21,7 +21,7 @@ public:
 private slots:
    // void on_SetInput_clicked();
 
-   // void on_GetOutput_clicked();
+    void on_GetOutput_clicked();
 
 private:
     Ui::IOset *ui;

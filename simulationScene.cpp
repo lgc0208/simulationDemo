@@ -19,7 +19,7 @@
 **********************************************************************************
 */
 
-#include "stimulationScene.h"
+#include "simulationScene.h"
 #include "arrow.h"
 #include <QTextCursor>
 #include <QGraphicsSceneMouseEvent>

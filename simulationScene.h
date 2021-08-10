@@ -1,4 +1,4 @@
-﻿/**
+/**
 * @file     stimulationScene.h
 * @brief    项目场景函数头文件
 * @details  主要包含stimulationScene类的声明
@@ -16,8 +16,8 @@
 *
 **********************************************************************************
 */
-#ifndef STIMULATIONSCENE_H
-#define STIMULATIONSCENE_H
+#ifndef SIMULATIONSCENE_H
+#define SIMULATIONSCENE_H
 #include <QGraphicsScene>
 #include "items.h"
 #include "textItem.h"
@@ -74,4 +74,4 @@ private:
     TextItem *textItem;
 };
 
-#endif // STIMULATIONSCENE_H
+#endif // SIMULATIONSCENE_H

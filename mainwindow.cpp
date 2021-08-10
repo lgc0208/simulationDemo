@@ -24,7 +24,7 @@
 #include "mainwindow.h"
 #include "arrow.h"
 #include "items.h"
-#include "stimulationScene.h"
+#include "simulationScene.h"
 #include "textItem.h"
 #include "ioset.h"
 #include <QtWidgets>
