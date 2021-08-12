@@ -25,7 +25,7 @@
 #include "ioset.h"
 #include <QMainWindow>
 
-class StimulationScene;
+class SimulationScene;
 
 //  宏定义
 QT_BEGIN_NAMESPACE
@@ -79,7 +79,7 @@ private:
     QIcon createColorToolButtonIcon(const QString &image, QColor color);
     QIcon createColorIcon(QColor color);
 
-    StimulationScene    *scene;
+    SimulationScene    *scene;
     QGraphicsView       *view;
 
     //  创建操作行为

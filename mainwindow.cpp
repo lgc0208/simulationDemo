@@ -40,7 +40,7 @@ MainWindow::MainWindow()
     createToolBox();
     createMenus();
 
-    scene = new StimulationScene(itemMenu, this);
+    scene = new SimulationScene(itemMenu, this);
     scene->setSceneRect(QRectF(0, 0, 5000, 5000));
     connect(scene, SIGNAL(itemInserted(Items*)),
             this, SLOT(itemInserted(Items*)));
@@ -59,7 +59,7 @@ MainWindow::MainWindow()
     widget->setLayout(layout);
 
     setCentralWidget(widget);
-    setWindowTitle(tr("stimulationDemo Version 0.0.1"));
+    setWindowTitle(tr("SimulationDemo Version 0.0.1"));
     setUnifiedTitleAndToolBarOnMac(true);
 }
 
@@ -80,10 +80,10 @@ void MainWindow::buttonGroupClicked(int id)
 
     //  根据点击的图标设定程序执行模式为： 插入文字模式 或 插入项模式
     if (id == InsertTextButton) {
-        scene->setMode(StimulationScene::insertText);
+        scene->setMode(SimulationScene::insertText);
     } else {
         scene->setItemType(Items::ItemType(id));
-        scene->setMode(StimulationScene::insertItem);
+        scene->setMode(SimulationScene::insertItem);
     }
 }
 
@@ -118,7 +118,7 @@ void MainWindow::deleteItem()
  */
 void MainWindow::pointerGroupClicked(int)
 {
-    scene->setMode(StimulationScene::Mode(pointerTypeGroup->checkedId()));
+    scene->setMode(SimulationScene::Mode(pointerTypeGroup->checkedId()));
 }
 
 /**
@@ -170,8 +170,8 @@ void MainWindow::sendToBack()
  */
 void MainWindow::itemInserted(Items *item)
 {
-    pointerTypeGroup->button(int(StimulationScene::moveItem))->setChecked(true);
-    scene->setMode(StimulationScene::Mode(pointerTypeGroup->checkedId()));
+    pointerTypeGroup->button(int(SimulationScene::moveItem))->setChecked(true);
+    scene->setMode(SimulationScene::Mode(pointerTypeGroup->checkedId()));
     buttonGroup->button(int(item->itemType()))->setChecked(false);
 }
 
@@ -182,7 +182,7 @@ void MainWindow::itemInserted(Items *item)
 void MainWindow::textInserted(QGraphicsTextItem *)
 {
     buttonGroup->button(InsertTextButton)->setChecked(false);
-    scene->setMode(StimulationScene::Mode(pointerTypeGroup->checkedId()));
+    scene->setMode(SimulationScene::Mode(pointerTypeGroup->checkedId()));
 }
 
 /**
@@ -410,8 +410,8 @@ void MainWindow::createToolbars()
     linePointerButton->setIcon(QIcon(":/images/linepointer.png"));
 
     pointerTypeGroup = new QButtonGroup(this);
-    pointerTypeGroup->addButton(pointerButton, int(StimulationScene::moveItem));
-    pointerTypeGroup->addButton(linePointerButton, int(StimulationScene::insertLine));
+    pointerTypeGroup->addButton(pointerButton, int(SimulationScene::moveItem));
+    pointerTypeGroup->addButton(linePointerButton, int(SimulationScene::insertLine));
     connect(pointerTypeGroup, SIGNAL(buttonClicked(int)),
             this, SLOT(pointerGroupClicked(int)));
 

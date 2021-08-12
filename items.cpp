@@ -2,7 +2,7 @@
 * @file     items.cpp
 * @brief    功能项函数文件
 * @details  主要包含功能项类的实现
-*           items表示StimulationScene中的功能项形状。
+*           items表示SimulationScene中的功能项形状。
 *           它继承了QGraphicsPolygonItem，并为每个形状提供了一个多边形。枚举ItemType对每个流程图形状都有一个值。
 * @author   LIN Guocheng
 * @date     2021-8-9

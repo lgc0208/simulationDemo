@@ -1,8 +1,8 @@
 ﻿/**
-* @file     stimulationScene.cpp
+* @file     SimulationScene.cpp
 * @brief    仿真场景实现函数文件
 * @details  主要包含仿真场景功能的实现
-*           StimulationScene类继承了QGraphicsScene，并添加了处理Items、arrow和TextItems的功能，以及由它的超类处理的项目。
+*           SimulationScene类继承了QGraphicsScene，并添加了处理Items、arrow和TextItems的功能，以及由它的超类处理的项目。
 * @author   LIN Guocheng
 * @date     2021-8-9
 * @version  0.0.2
@@ -25,7 +25,7 @@
 #include <QGraphicsSceneMouseEvent>
 #include <iostream>
 
-StimulationScene::StimulationScene(QMenu *itemMenu, QObject *parent)
+SimulationScene::SimulationScene(QMenu *itemMenu, QObject *parent)
     :QGraphicsScene(parent)
 {
     myItemMenu = itemMenu;
@@ -39,10 +39,10 @@ StimulationScene::StimulationScene(QMenu *itemMenu, QObject *parent)
 }
 
 /**
- * @brief StimulationScene::setFont 设置字体
+ * @brief SimulationScene::setFont 设置字体
  * @param font  QFont字体
  */
-void StimulationScene::setFont(const QFont &font)
+void SimulationScene::setFont(const QFont &font)
 {
     myFont = font;
     if(isItemChange(TextItem::Type))
@@ -54,28 +54,28 @@ void StimulationScene::setFont(const QFont &font)
 }
 
 /**
- * @brief StimulationScene::setMode 设置操作模式
+ * @brief SimulationScene::setMode 设置操作模式
  * @param mode  Mode操作模式类型
  */
-void StimulationScene::setMode(Mode mode)
+void SimulationScene::setMode(Mode mode)
 {
     myMode = mode;
 }
 
 /**
- * @brief StimulationScene::setItemType 设置可选项的种类
+ * @brief SimulationScene::setItemType 设置可选项的种类
  * @param type  项的种类ItemType
  */
-void StimulationScene::setItemType(Items::ItemType type)
+void SimulationScene::setItemType(Items::ItemType type)
 {
     myItemType = type;
 }
 
 /**
- * @brief StimulationScene::editorLostFocus 文本框失去焦点时，如果项目没有文本，则删除它
+ * @brief SimulationScene::editorLostFocus 文本框失去焦点时，如果项目没有文本，则删除它
  * @param item  TextItem
  */
-void StimulationScene::editorLostFocus(TextItem *item)
+void SimulationScene::editorLostFocus(TextItem *item)
 {
     QTextCursor cursor = item->textCursor();
     cursor.clearSelection();
@@ -88,10 +88,10 @@ void StimulationScene::editorLostFocus(TextItem *item)
 }
 
 /**
- * @brief StimulationScene::mousePressEvent 处理鼠标点击事件
+ * @brief SimulationScene::mousePressEvent 处理鼠标点击事件
  * @param mouseEvent    QGraphicsSceneMouseEvent
  */
-void StimulationScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
+void SimulationScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     //  如果不是左键点击，则跳过此函数
     if (mouseEvent->button() != Qt::LeftButton)
@@ -135,10 +135,10 @@ void StimulationScene::mousePressEvent(QGraphicsSceneMouseEvent *mouseEvent)
 }
 
 /**
- * @brief StimulationScene::mouseMoveEvent  调用 QGraphicsScene::mouseMoveEvent 处理项的移动
+ * @brief SimulationScene::mouseMoveEvent  调用 QGraphicsScene::mouseMoveEvent 处理项的移动
  * @param mouseEvent    QGraphicsSceneMouseEvent
  */
-void StimulationScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
+void SimulationScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     //  模式为插入连接线且屏幕区域内存在连接线
     if (myMode == insertLine && line != 0) {
@@ -150,10 +150,10 @@ void StimulationScene::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent)
 }
 
 /**
- * @brief StimulationScene::mouseReleaseEvent   处理鼠标松开后的事件
+ * @brief SimulationScene::mouseReleaseEvent   处理鼠标松开后的事件
  * @param mouseEvent    QGraphicsSceneMouseEvent
  */
-void StimulationScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
+void SimulationScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 {
     //  判断是否需要加入连接线
     if (line != 0 && myMode == insertLine) {
@@ -190,11 +190,11 @@ void StimulationScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
 }
 
 /**
- * @brief StimulationScene::isItemChange    检查所选项是否存在并且是否是指定类型
+ * @brief SimulationScene::isItemChange    检查所选项是否存在并且是否是指定类型
  * @param type  int类型，与enum中的列表对应
  * @return  若对应，返回true；否则返回false
  */
-bool StimulationScene::isItemChange(int type)
+bool SimulationScene::isItemChange(int type)
 {
     foreach (QGraphicsItem *item, selectedItems()) {
         if (item->type() == type)

@@ -1,7 +1,7 @@
-/**
-* @file     stimulationScene.h
+﻿/**
+* @file     SimulationScene.h
 * @brief    项目场景函数头文件
-* @details  主要包含stimulationScene类的声明
+* @details  主要包含SimulationScene类的声明
 * @author   LIN Guocheng
 * @date     2021-8-6
 * @version  0.0.1
@@ -32,20 +32,20 @@ class QGraphicsTextItem;
 class QColor;
 QT_END_NAMESPACE
 
-class StimulationScene : public QGraphicsScene
+class SimulationScene : public QGraphicsScene
 {
     Q_OBJECT
 
 public:
     enum Mode {insertItem, insertLine, insertText, moveItem};   // 4 种运行模式：插入项，插入连接线，插入文本，移动项
 
-    explicit StimulationScene(QMenu *itemMenu, QObject *parent = 0);
+    explicit SimulationScene(QMenu *itemMenu, QObject *parent = 0);
     QFont font() const { return myFont;}
 
     void setFont(const QFont &font);    // 设置字体
 
 public slots:
-    void setMode(StimulationScene::Mode mode);    // 设置当前模式
+    void setMode(SimulationScene::Mode mode);    // 设置当前模式
     void setItemType(Items::ItemType type); // 设置项种类
     void editorLostFocus(TextItem *item);   // 文本框失去焦点
 
