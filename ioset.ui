@@ -58,19 +58,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="GetOutput">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>230</y>
-     <width>89</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Get Output</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="inputValue">
    <property name="geometry">
     <rect>
@@ -86,7 +73,7 @@
     <rect>
      <x>70</x>
      <y>230</y>
-     <width>89</width>
+     <width>251</width>
      <height>24</height>
     </rect>
    </property>

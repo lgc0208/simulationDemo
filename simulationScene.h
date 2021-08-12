@@ -3,8 +3,8 @@
 * @brief    项目场景函数头文件
 * @details  主要包含SimulationScene类的声明
 * @author   LIN Guocheng
-* @date     2021-8-6
-* @version  0.0.1
+* @date     2021-8-13
+* @version  1.0.0
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -12,6 +12,7 @@
 * <table>
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * </table>
 *
 **********************************************************************************

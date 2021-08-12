@@ -5,8 +5,8 @@
 *           items表示SimulationScene中的功能项形状。
 *           它继承了QGraphicsPolygonItem，并为每个形状提供了一个多边形。枚举ItemType对每个流程图形状都有一个值。
 * @author   LIN Guocheng
-* @date     2021-8-9
-* @version  0.0.1
+* @date     2021-8-13
+* @version  1.0.0
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -16,6 +16,8 @@
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
 * <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>增加器件计算函数
 * <tr><td>2021/08/10  <td>0.0.3    <td>LIN Guocheng  <td>增加器件设置输入和显示输出函数
+* <tr><td>2021/08/12  <td>0.0.4    <td>LIN Guocheng  <td>增加获取当前项种类的函数
+* <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * </table>
 *
 **********************************************************************************
@@ -180,6 +182,10 @@ double Items::getInputNum()
     return this->inputNum;
 }
 
+/**
+ * @brief Items::getItemType    获取对应项的种类
+ * @return 返回枚举类型的对应项种类
+ */
 Items::ItemType Items::getItemType()
 {
     return this->itemType();

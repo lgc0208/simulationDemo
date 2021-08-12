@@ -4,8 +4,8 @@
 * @details  主要包含仿真场景功能的实现
 *           SimulationScene类继承了QGraphicsScene，并添加了处理Items、arrow和TextItems的功能，以及由它的超类处理的项目。
 * @author   LIN Guocheng
-* @date     2021-8-9
-* @version  0.0.2
+* @date     2021-8-13
+* @version  1.0.0
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -14,6 +14,7 @@
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
 * <tr><td>2021/08/09  <td>0.0.2    <td>LIN Guocheng  <td>mouseReleaseEvent中增加了对于item的输入输出数处理结果
+* <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * </table>
 *
 **********************************************************************************

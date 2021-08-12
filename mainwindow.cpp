@@ -7,8 +7,8 @@
  *          当图场景的文本项更改，或者一个图项或一个图文本项被插入到场景中时，它也会更新它的小部件。
  *          这个类还从场景中删除项目，这决定了项目在相互重叠时的绘制顺序。
 * @author   LIN Guocheng
-* @date     2021-8-6
-* @version  V0.0.1
+* @date     2021-8-13
+* @version  V1.0.0
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -16,6 +16,8 @@
 * <table>
 * <tr><th>Date        <th>Version  <th>Author    <th>Description
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
+* <tr><td>2021/08/12  <td>0.0.2    <td>LIN Guocheng  <td>增加与子窗口通信的信号和槽函数，用于传递输入输出值
+* <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * </table>
 *
 **********************************************************************************
@@ -458,8 +460,9 @@ QWidget *MainWindow::createCellWidget(const QString &text, Items::ItemType type)
     return widget;
 }
 
-
-//test
+/**
+ * @brief MainWindow::setGetValueWindow 唤醒子窗口
+ */
 void MainWindow::setGetValueWindow()
 {
     double outputNum = 0;
@@ -471,13 +474,19 @@ void MainWindow::setGetValueWindow()
 
     setGetWindow = new IOset();
     setGetWindow->setModal(true);
+    //  发生输出值到子窗口
     QObject::connect(this, SIGNAL(sendOutputValue(double)), setGetWindow, SLOT(getOutputValue(double)));
     emit sendOutputValue(outputNum);
+    //  从子窗口接受输入值
     connect(setGetWindow,SIGNAL(sendInputValue(double)),this,SLOT(getInputValue(double)));
     setGetWindow->show();
 
 }
 
+/**
+ * @brief MainWindow::getInputValue 获得输入值并根据项的种类更新输出值
+ * @param inputNum  子窗口设定的输入值
+ */
 void MainWindow::getInputValue(double inputNum)
 {
     foreach (QGraphicsItem *item, scene->selectedItems()) {
