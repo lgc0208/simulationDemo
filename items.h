@@ -60,15 +60,18 @@ public:
 
     //  器件具体功能实现
     void setInputNum(double inputNum);
+    ItemType getItemType();
     double getOutputNum();
+    double getInputNum();
     double calculateResult(ItemType myItemType, double inputNum);
+
 
 protected:
     void contextMenuEvent(QGraphicsSceneContextMenuEvent *event) override;
     QVariant itemChange(GraphicsItemChange change, const QVariant &value) override;
 
 private:
-    double inputNum = 0;
+    double inputNum = 3.0;
     double outputNum = 0;
     ItemType myItemType;
     QPolygonF myPolygon;

@@ -181,8 +181,9 @@ void SimulationScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent)
             addItem(arrow);
             arrow->updatePosition();
             // test
+            startItem->calculateResult(startItem->itemType(), startItem->getInputNum());
             endItem->calculateResult(endItem->itemType(), startItem->getOutputNum());
-            std::cout << endItem->itemType() << " " << endItem->getOutputNum() << std::endl;
+            std::cout << startItem->getOutputNum() << " " << endItem->getOutputNum() << std::endl;
         }
     }
     line = 0;

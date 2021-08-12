@@ -65,6 +65,10 @@ private slots:
     void itemSelected(QGraphicsItem *item);
     void about();
     void setGetValueWindow(); // 唤醒窗口
+    void getInputValue(double inputNum);
+
+signals:
+    void sendOutputValue(double outputNum);
 
 private:
     void createToolBox();   // 创建工具箱

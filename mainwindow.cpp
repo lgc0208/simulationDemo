@@ -50,6 +50,8 @@ MainWindow::MainWindow()
             this, SLOT(itemSelected(QGraphicsItem*)));
     createToolbars();
 
+
+
     QHBoxLayout *layout = new QHBoxLayout;
     layout->addWidget(toolBox);
     view = new QGraphicsView(scene);
@@ -405,6 +407,7 @@ void MainWindow::createToolbars()
     pointerButton->setCheckable(true);
     pointerButton->setChecked(true);
     pointerButton->setIcon(QIcon(":/images/pointer.png"));
+
     QToolButton *linePointerButton = new QToolButton;
     linePointerButton->setCheckable(true);
     linePointerButton->setIcon(QIcon(":/images/linepointer.png"));
@@ -459,12 +462,32 @@ QWidget *MainWindow::createCellWidget(const QString &text, Items::ItemType type)
 //test
 void MainWindow::setGetValueWindow()
 {
-    setGetWindow = new IOset();
-    setGetWindow->show();
-    //item = qgraphicsitem_cast <Items *> (selectedItems().first());
-    //  遍历所有选择的项，如果为箭头，执行该部分代码
-
+    double outputNum = 0;
+    //  遍历所有选择的项，如果为图，执行该部分代码
     foreach (QGraphicsItem *item, scene->selectedItems()) {
-        std::cout << "item: " << std::endl;
-        }
+         if (item->type() == Items::Type)
+             outputNum = qgraphicsitem_cast <Items *> (item)->getOutputNum();
+     }
+
+    setGetWindow = new IOset();
+    setGetWindow->setModal(true);
+    QObject::connect(this, SIGNAL(sendOutputValue(double)), setGetWindow, SLOT(getOutputValue(double)));
+    emit sendOutputValue(outputNum);
+    connect(setGetWindow,SIGNAL(sendInputValue(double)),this,SLOT(getInputValue(double)));
+    setGetWindow->show();
+
+}
+
+void MainWindow::getInputValue(double inputNum)
+{
+    foreach (QGraphicsItem *item, scene->selectedItems()) {
+         if (item->type() == Items::Type)
+         {
+             qgraphicsitem_cast <Items *> (item)->getItemType();
+             qgraphicsitem_cast <Items *> (item)->setInputNum(inputNum);
+             qgraphicsitem_cast <Items *> (item)->calculateResult(
+                         qgraphicsitem_cast <Items *> (item)->getItemType(), inputNum);
+         }
+
+     }
 }

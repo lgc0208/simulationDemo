@@ -147,9 +147,11 @@ double Items::calculateResult(ItemType myItemType, double inputNum)
     {
         outputNum = inputNum * inputNum;
     }
+    this->inputNum = inputNum;
     this->outputNum = outputNum;
     return outputNum;
 }
+
 
 /**
  * @brief Items::setInputNum    设置该Item的InputNum
@@ -167,4 +169,18 @@ void Items::setInputNum(double inputNum)
 double Items::getOutputNum()
 {
     return this->outputNum;
+}
+
+/**
+ * @brief Items::getInputNum   输出该Item的inputNum
+ * @return 该Item的inputNum
+ */
+double Items::getInputNum()
+{
+    return this->inputNum;
+}
+
+Items::ItemType Items::getItemType()
+{
+    return this->itemType();
 }
