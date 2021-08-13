@@ -7,8 +7,8 @@
  *          当图场景的文本项更改，或者一个图项或一个图文本项被插入到场景中时，它也会更新它的小部件。
  *          这个类还从场景中删除项目，这决定了项目在相互重叠时的绘制顺序。
 * @author   LIN Guocheng
-* @date     2021-8-13
-* @version  V1.0.0
+* @date     2021-8-14
+* @version  V1.0.1
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -18,6 +18,7 @@
 * <tr><td>2021/08/06  <td>0.0.1    <td>LIN Guocheng  <td>创建初始版本
 * <tr><td>2021/08/12  <td>0.0.2    <td>LIN Guocheng  <td>增加与子窗口通信的信号和槽函数，用于传递输入输出值
 * <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
+* <tr><td>2021/08/14  <td>1.0.1    <td>LIN Guocheng  <td>增加完成输入值的设置后自动关闭子窗口
 * </table>
 *
 **********************************************************************************
@@ -64,7 +65,7 @@ MainWindow::MainWindow()
 
     setCentralWidget(widget);
     setWindowTitle(tr("SimulationDemo Version 0.0.1"));
-    setUnifiedTitleAndToolBarOnMac(true);
+    setUnifiedTitleAndToolBarOnMac(true);   // 适配 MAC 系统
 }
 
 /**
@@ -492,11 +493,10 @@ void MainWindow::getInputValue(double inputNum)
     foreach (QGraphicsItem *item, scene->selectedItems()) {
          if (item->type() == Items::Type)
          {
-             qgraphicsitem_cast <Items *> (item)->getItemType();
              qgraphicsitem_cast <Items *> (item)->setInputNum(inputNum);
              qgraphicsitem_cast <Items *> (item)->calculateResult(
                          qgraphicsitem_cast <Items *> (item)->getItemType(), inputNum);
          }
-
      }
+    setGetWindow->close();
 }
