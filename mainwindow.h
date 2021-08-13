@@ -15,6 +15,7 @@
 * <tr><td>2021/08/12  <td>0.0.2    <td>LIN Guocheng  <td>增加与子窗口通信的信号和槽函数，用于传递输入输出值
 * <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * <tr><td>2021/08/14  <td>1.0.1    <td>LIN Guocheng  <td>增加完成输入值的设置后自动关闭子窗口
+* <tr><td>2021/08/14  <td>1.0.2    <td>LIN Guocheng  <td>补充子窗口的输入值显示,将sendOutputValue(double)修改为sendIOValue(double,double)
 * </table>
 *
 **********************************************************************************
@@ -71,7 +72,7 @@ private slots:
     void getInputValue(double inputNum);
 
 signals:
-    void sendOutputValue(double outputNum);
+    void sendIOValue(double inputNum, double outputNum);
 
 private:
     void createToolBox();   // 创建工具箱

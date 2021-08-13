@@ -4,7 +4,7 @@
 * @details  主要包含连接线功能的函数实现
 * @author   LIN Guocheng
 * @date     2021-8-14
-* @version  1.0.1
+* @version  1.0.2
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -15,6 +15,7 @@
 * <tr><td>2021/08/12  <td>0.0.2    <td>LIN Guocheng  <td>增加与主页面交互的输入输出值窗口
 * <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * <tr><td>2021/08/14  <td>1.0.1    <td>LIN Guocheng  <td>增加了子窗口名
+* <tr><td>2021/08/14  <td>1.0.2    <td>LIN Guocheng  <td>补充子窗口的输入值显示,将getOutputValue(double)修改为getIOValue(double,double)
 * </table>
 *
 **********************************************************************************
@@ -45,14 +46,15 @@ IOset::~IOset()
 }
 
 /**
- * @brief IOset::getOutputValue 获取主窗口对应项的输出值，并显示在文本框中
+ * @brief IOset::getIOValue 获取主窗口对应项的输入输出值，并显示在文本框中
+ * @param inputNum  输入值
  * @param outputNum 输出值
  */
-void IOset::getOutputValue(double outputNum)
+void IOset::getIOValue(double inputNum, double outputNum)
 {
-    QString outputStr;
-
-    ui->outputValue->setText(outputStr.setNum(outputNum));
+    QString tmpStr;
+    ui->inputValue->setText(tmpStr.setNum(inputNum));
+    ui->outputValue->setText(tmpStr.setNum(outputNum));
 }
 
 /**

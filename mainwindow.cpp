@@ -8,7 +8,7 @@
  *          这个类还从场景中删除项目，这决定了项目在相互重叠时的绘制顺序。
 * @author   LIN Guocheng
 * @date     2021-8-14
-* @version  V1.0.1
+* @version  V1.0.2
 **********************************************************************************
 * @attention
 * QT版本：5.12.11
@@ -19,6 +19,7 @@
 * <tr><td>2021/08/12  <td>0.0.2    <td>LIN Guocheng  <td>增加与子窗口通信的信号和槽函数，用于传递输入输出值
 * <tr><td>2021/08/13  <td>1.0.0    <td>LIN Guocheng  <td>完成第一代基础版本的适配
 * <tr><td>2021/08/14  <td>1.0.1    <td>LIN Guocheng  <td>增加完成输入值的设置后自动关闭子窗口
+* <tr><td>2021/08/14  <td>1.0.2    <td>LIN Guocheng  <td>补充子窗口的输入值显示,将sendOutputValue(double)修改为sendIOValue(double,double)
 * </table>
 *
 **********************************************************************************
@@ -467,17 +468,21 @@ QWidget *MainWindow::createCellWidget(const QString &text, Items::ItemType type)
 void MainWindow::setGetValueWindow()
 {
     double outputNum = 0;
+    double inputNum = 0;
     //  遍历所有选择的项，如果为图，执行该部分代码
     foreach (QGraphicsItem *item, scene->selectedItems()) {
          if (item->type() == Items::Type)
+         {
+             inputNum = qgraphicsitem_cast <Items *> (item)->getInputNum();
              outputNum = qgraphicsitem_cast <Items *> (item)->getOutputNum();
+         }
      }
 
     setGetWindow = new IOset();
     setGetWindow->setModal(true);
     //  发生输出值到子窗口
-    QObject::connect(this, SIGNAL(sendOutputValue(double)), setGetWindow, SLOT(getOutputValue(double)));
-    emit sendOutputValue(outputNum);
+    QObject::connect(this, SIGNAL(sendIOValue(double, double)), setGetWindow, SLOT(getIOValue(double, double)));
+    emit sendIOValue(inputNum, outputNum);
     //  从子窗口接受输入值
     connect(setGetWindow,SIGNAL(sendInputValue(double)),this,SLOT(getInputValue(double)));
     setGetWindow->show();
