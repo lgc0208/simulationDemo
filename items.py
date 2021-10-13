@@ -15,28 +15,37 @@ class Items(QGraphicsPolygonItem):
         self.__fc = 4   # 调制器信号频率
         
         self.arrows = []
-
+        self.imgUrl = ""
         self.item_type = item_type
         self._my_context_menu = contextMenu
 
         path = QPainterPath()
         if self.item_type == self.NRZOOK:
+            '''
             self._my_polygon = QPolygonF([
                     QPointF(-100/2, -100/2), QPointF(100/2, -100/2),
                     QPointF(100/2, 100/2), QPointF(-100/2, 100/2),
                     QPointF(-100/2, -100/2)])
+    '''
+            self.imgUrl = ':/images/background1.png'
+    
         elif self.item_type == self.TestItem:
+            '''
             self._my_polygon = QPolygonF([
                     QPointF(-100/2, 0), QPointF(0, 100/2),
                     QPointF(100/2, 0), QPointF(0, -100/2),
                     QPointF(-100/2, 0)])
+            '''
         else:
+            '''
             self._my_polygon = QPolygonF([
                     QPointF(-120/2, -80/2), QPointF(-70/2, 80/2),
                     QPointF(120/2, 80/2), QPointF(70/2, -80/2),
                     QPointF(-120/2, -80/2)])
-
-        self.setPolygon(self._my_polygon)
+            '''
+            self.imgUrl = ':/images/background1.png'
+        #self.setPolygon(self._my_polygon)
+        self.setImgUrl(self.imgUrl)
         self.setFlag(QGraphicsItem.ItemIsMovable, True)
         self.setFlag(QGraphicsItem.ItemIsSelectable, True)
     
@@ -59,7 +68,9 @@ class Items(QGraphicsPolygonItem):
         self.arrows.append(arrow)
 
     # 图标
+    
     def image(self):
+        '''
         pixmap = QPixmap(250, 250)
         pixmap.fill(Qt.transparent)
         painter = QPainter(pixmap)
@@ -67,7 +78,10 @@ class Items(QGraphicsPolygonItem):
         painter.translate(125, 125)
         painter.drawPolyline(self._my_polygon)
         return pixmap
-
+        '''
+        img = self.getImgUrl()
+        return img
+    
     # 菜单栏
     def contextMenuEvent(self, event):
         self.scene().clearSelection()
@@ -136,4 +150,12 @@ class Items(QGraphicsPolygonItem):
     # 得到调制器频率
     def getfc(self):
         return self.__fc
+    
+    # 设置输入值
+    def setImgUrl(self, imgUrl):
+        self.imgUrl = imgUrl
+    
+    # 得到输入值
+    def getImgUrl(self):
+        return self.imgUrl
 ##################SET-GET METHOD##############################
