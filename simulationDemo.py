@@ -228,7 +228,7 @@ class MainWindow(QMainWindow):
                     self.setGetWindow.ui.labelE0.setVisible(False)
                     self.setGetWindow.ui.labelFc.setVisible(False)
                 # 若为NRZOOK
-                elif item.item_type == item.NRZOOK:
+                elif item.item_type == item.NRZOOK or item.RZ33OOk or item.RZ50OOK or item.RZ66OOK:
                     self.setGetWindow.ui.E0Value.setVisible(True)
                     self.setGetWindow.ui.FcValue.setVisible(True)
                     self.setGetWindow.ui.labelE0.setVisible(True)
@@ -243,7 +243,7 @@ class MainWindow(QMainWindow):
     def getInputValue(self, inputNum, E0, fc):
         for item in self.scene.selectedItems():
             if isinstance(item, Items):
-                if item.item_type == item.NRZOOK:
+                if item.item_type == item.NRZOOK or item.RZ33OOk or item.RZ50OOK or item.RZ66OOK:
                     item.setInputNum(inputNum)
                     item.setE0(E0)
                     item.setfc(fc)
@@ -257,21 +257,25 @@ class MainWindow(QMainWindow):
         
     # 创建工具盒
     def create_tool_box(self):
+    
         self._button_group = QButtonGroup()
         self._button_group.setExclusive(False)
         self._button_group.idClicked.connect(self.button_group_clicked)
-
+        
+        # 器件选择框
         layout = QGridLayout()
         layout.addWidget(self.create_cell_widget("乘方器", Items.TestItem),
                 0, 0)
         layout.addWidget(self.create_cell_widget("NRZ-OOK调制器", Items.NRZOOK),
                          0, 1)
-        '''
-        layout.addWidget(self.create_cell_widget("Process", Items.Step), 0,
-                1)
-        layout.addWidget(self.create_cell_widget("Input/Output", Items.Io),
-                1, 0)
-        '''
+        layout.addWidget(self.create_cell_widget("RZ33-OOK调制器", Items.RZ33OOk),
+                         1, 0)
+        layout.addWidget(self.create_cell_widget("RZ50-OOK调制器", Items.RZ50OOK),
+                         1, 1)
+        layout.addWidget(self.create_cell_widget("RZ66-OOK调制器", Items.RZ66OOK),
+                         2, 0)
+        
+        # 添加文字按钮
         text_button = QToolButton()
         text_button.setCheckable(True)
         self._button_group.addButton(text_button, self.insert_text_button)
@@ -280,11 +284,11 @@ class MainWindow(QMainWindow):
         text_button.setIconSize(QSize(50, 50))
 
         text_layout = QGridLayout()
-        text_layout.addWidget(text_button, 0, 0, Qt.AlignHCenter)
-        text_layout.addWidget(QLabel("文本框"), 1, 0, Qt.AlignCenter)
+        text_layout.addWidget(text_button, 0, 1, Qt.AlignHCenter)
+        text_layout.addWidget(QLabel("文本框"), 2, 1, Qt.AlignCenter)
         text_widget = QWidget()
         text_widget.setLayout(text_layout)
-        layout.addWidget(text_widget, 1, 0)
+        layout.addWidget(text_widget, 2, 1)
 
         layout.setRowStretch(3, 10)
         layout.setColumnStretch(2, 10)
@@ -295,6 +299,7 @@ class MainWindow(QMainWindow):
         self._background_button_group = QButtonGroup()
         self._background_button_group.buttonClicked.connect(self.background_button_group_clicked)
 
+        # 背景选择框
         background_layout = QGridLayout()
         background_layout.addWidget(self.create_background_cell_widget("蓝色格子",
                 ':/images/background1.png'), 0, 0)
@@ -480,7 +485,7 @@ class MainWindow(QMainWindow):
     # 创建项部件
     def create_cell_widget(self, text, item_type):
         item = Items(item_type, self._item_menu)
-        icon = QIcon(item.image())
+        icon = QIcon(item.image().scaled(500, 500))
 
         button = QToolButton()
         button.setIcon(icon)

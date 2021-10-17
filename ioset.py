@@ -21,6 +21,6 @@ class IOSet(QWidget):
         E0ValueStr = self.ui.E0Value.text()
         fcValueStr = self.ui.FcValue.text()
         
-        self.new_input_value.emit(complex(inputValueStr), 
+        self.new_input_value.emit(float(inputValueStr), 
                                   float(E0ValueStr), 
                                   float(fcValueStr))
