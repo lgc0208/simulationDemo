@@ -143,7 +143,8 @@ class MainScene(QGraphicsScene):
                 arrow.update_position()
                 
                 # 连接箭头释放后进行传值
-                end_item.calculateResult(end_item.item_type, start_item.getOutputNum()+end_item.getInputNum())
+                end_item.calculateResult(end_item.item_type, 
+                                         start_item.getOutputNum()+end_item.getInputNum())
 
         self.line = None
         super(MainScene, self).mouseReleaseEvent(mouseEvent)
@@ -151,6 +152,5 @@ class MainScene(QGraphicsScene):
     # 是否可选项发生改变
     def is_item_change(self, type):
         for item in self.selectedItems():
-            if isinstance(item, type):
                 return True
         return False

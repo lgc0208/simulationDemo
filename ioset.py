@@ -12,8 +12,6 @@ class IOSet(QWidget):
         self.ui = Ui_IOset()
         self.ui.setupUi(self)
         self.ui.SetInput.clicked.connect(self.on_SetInput_clicked)
-        
-        
 
         
     def on_SetInput_clicked(self):

@@ -33,4 +33,3 @@ class nrz_ook:
         return y
     
     
-

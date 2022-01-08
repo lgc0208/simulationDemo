@@ -14,8 +14,8 @@ class Items(QGraphicsPolygonItem):
         
         self.__inputNum = 0     # 输入值
         self.__outputNum = 0    #输出值
-        self.__E0 = 3   # 调制器信号幅度
-        self.__fc = 4   # 调制器信号频率
+        self.__E0 = 0.3   # 调制器信号幅度
+        self.__fc = 0.4   # 调制器信号频率
         
         self.arrows = []        
         self.item_type = item_type
@@ -140,13 +140,13 @@ class Items(QGraphicsPolygonItem):
         if change == QGraphicsItem.ItemPositionChange:
             for arrow in self.arrows:
                 arrow.updatePosition()
-
         return value
     
 
     
     # 计算结果
     def calculateResult(self, itemType, inputNum):
+        print("itemType:", itemType)
         if(itemType == self.TestItem):
             outputNum = inputNum * inputNum
             self.__inputNum = inputNum
