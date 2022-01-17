@@ -1,4 +1,9 @@
-# -*- coding: utf-8 -*-
+"""
+    File Name:          ui_ioset.py
+    Author:             LIN Guocheng
+    Version:            1.0.0
+    Description:        界面样式类，设定了输入输出子窗口的样式
+"""
 
 # Form implementation generated from reading ui file 'ioset.ui'
 #

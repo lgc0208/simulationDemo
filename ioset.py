@@ -1,3 +1,9 @@
+"""
+    File Name:          ioset.py
+    Author:             LIN Guocheng
+    Version:            0.0.1
+    Description:        输入输出子窗口
+"""
 from PySide6.QtWidgets import QWidget
 from PySide6.QtCore import Signal
 

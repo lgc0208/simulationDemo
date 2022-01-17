@@ -1,10 +1,12 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Oct  8 15:02:46 2021
-
-光调制器 RZ50-OOK
-
-@author: lishu
+    File Name:          rz50ook.py
+    Author:             LI Shuyuan
+    Version:            0.0.1
+    Description:        光调制器RZ50-OOK
+    History:            
+        1.  Date:           2021-10-8
+            Author:         LIN Guocheng
+            Modification:   删除测试部分，对平台进行适配
 """
 import math
 

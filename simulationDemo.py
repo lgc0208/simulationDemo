@@ -1,3 +1,9 @@
+"""
+    File Name:          simulationDemo.py
+    Author:             LIN Guocheng
+    Version:            1.0.0
+    Description:        主窗口类，平台的主程序
+"""
 import sys
 from PySide6.QtCore import (QRect, QRectF, QSize, Qt)
 from PySide6.QtGui import (QAction, QColor, QFont, QIcon, QIntValidator,

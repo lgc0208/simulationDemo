@@ -1,10 +1,12 @@
-# -*- coding: utf-8 -*-
 """
-Created on Fri Sep 24 10:44:03 2021
-
-幅度调制器NRZ-OOK
-
-@author: lishu
+    File Name:          nrzook.py
+    Author:             LI Shuyuan
+    Version:            0.0.1
+    Description:        幅度调制器NRZ-OOK
+    History:            
+        1.  Date:           2021-10-8
+            Author:         LIN Guocheng
+            Modification:   删除测试部分，对平台进行适配
 """
 import math
 import random

@@ -1,3 +1,9 @@
+"""
+    File Name:          items.py
+    Author:             LIN Guocheng
+    Version:            0.0.1
+    Description:        器件类，用于封装不同的器件
+"""
 from PySide6.QtCore import (QPointF, Qt, QRectF)
 from PySide6.QtGui import (QPainter, QPainterPath, QPen, QPixmap, QPolygonF, QImage, QFont)
 from PySide6.QtWidgets import (QGraphicsItem, QGraphicsPolygonItem)
@@ -7,7 +13,7 @@ from rz50ook import rz50_ook
 from rz66ook import rz66_ook
 
 class Items(QGraphicsPolygonItem):
-    NRZOOK, RZ33OOk, RZ50OOK, RZ66OOK, TestItem = range(5)
+    NRZOOK, RZ33OOk, RZ50OOK, RZ66OOK, SIGNAL, TestItem = range(5)
 
     def __init__(self, item_type, contextMenu, parent=None, scene=None):
         super().__init__(parent, scene)
@@ -79,6 +85,7 @@ class Items(QGraphicsPolygonItem):
             path.setFillRule(Qt.WindingFill)
             self._my_polygon = path.toFillPolygon()
             #self.img = QImage(':/images/power.png')
+            
         else:
             
             self._my_polygon = QPolygonF([

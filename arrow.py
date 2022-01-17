@@ -1,4 +1,9 @@
-# -*- coding: utf-8 -*-
+"""
+    File Name:          arrow.py
+    Author:             LIN Guocheng
+    Version:            0.0.1
+    Description:        箭头类，用于两个不同器件之间的连接
+"""
 import math
 
 from PySide6.QtCore import (QLineF, QPointF, QRectF, QSizeF, Qt)

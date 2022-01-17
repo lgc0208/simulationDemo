@@ -1,3 +1,9 @@
+"""
+    File Name:          mainScene.py
+    Author:             LIN Guocheng
+    Version:            0.0.1
+    Description:        主场景类，定义了操作窗口
+"""
 from PySide6.QtCore import (QLineF, Qt, Signal)
 from PySide6.QtGui import (QFont, QPen)
 from PySide6.QtWidgets import (QGraphicsItem, QGraphicsLineItem, 

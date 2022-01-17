@@ -1,3 +1,9 @@
+"""
+    File Name:          textItem.py
+    Author:             LIN Guocheng
+    Version:            1.0.0
+    Description:        文本框类，用于实现平台的文本框操作
+"""
 from PySide6.QtCore import (Qt, Signal)
 from PySide6.QtWidgets import (QGraphicsItem, QGraphicsTextItem)
 
