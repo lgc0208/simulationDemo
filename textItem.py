@@ -8,6 +8,8 @@ from PySide6.QtCore import (Qt, Signal)
 from PySide6.QtWidgets import (QGraphicsItem, QGraphicsTextItem)
 
 # 文本框
+
+
 class TextItem(QGraphicsTextItem):
     lost_focus = Signal(QGraphicsTextItem)
 

@@ -10,6 +10,7 @@ from PySide6.QtCore import (QLineF, QPointF, QRectF, QSizeF, Qt)
 from PySide6.QtGui import (QPen, QPolygonF)
 from PySide6.QtWidgets import (QGraphicsItem, QGraphicsLineItem)
 
+
 class Arrow(QGraphicsLineItem):
     def __init__(self, startItem, endItem, parent=None, scene=None):
         super().__init__(parent, scene)
@@ -21,7 +22,7 @@ class Arrow(QGraphicsLineItem):
         self.setFlag(QGraphicsItem.ItemIsSelectable, True)
         self._my_color = Qt.black
         self.setPen(QPen(self._my_color, 2, Qt.SolidLine,
-                Qt.RoundCap, Qt.RoundJoin))
+                         Qt.RoundCap, Qt.RoundJoin))
 
     # 设置颜色
     def set_color(self, color):

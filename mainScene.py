@@ -6,13 +6,14 @@
 """
 from PySide6.QtCore import (QLineF, Qt, Signal)
 from PySide6.QtGui import (QFont, QPen)
-from PySide6.QtWidgets import (QGraphicsItem, QGraphicsLineItem, 
+from PySide6.QtWidgets import (QGraphicsItem, QGraphicsLineItem,
                                QGraphicsTextItem, QGraphicsScene)
 
 
 from arrow import Arrow
 from textItem import TextItem
 from items import Items
+
 
 class MainScene(QGraphicsScene):
     InsertItem, InsertLine, InsertText, MoveItem = range(4)
@@ -35,7 +36,7 @@ class MainScene(QGraphicsScene):
         self._my_text_color = Qt.black
         self._my_line_color = Qt.black
         self._my_font = QFont()
-        
+
     # 设置线条颜色
     def set_line_color(self, color):
         self._my_line_color = color
@@ -96,7 +97,7 @@ class MainScene(QGraphicsScene):
             self.item_inserted.emit(item)
         elif self._my_mode == self.InsertLine:
             self.line = QGraphicsLineItem(QLineF(mouseEvent.scenePos(),
-                                        mouseEvent.scenePos()))
+                                                 mouseEvent.scenePos()))
             self.line.setPen(QPen(self._my_line_color, 2))
             self.addItem(self.line)
         elif self._my_mode == self.InsertText:
@@ -130,7 +131,7 @@ class MainScene(QGraphicsScene):
             end_items = self.items(self.line.line().p2())
             if len(end_items) and end_items[0] == self.line:
                 end_items.pop(0)
-            
+
             self.removeItem(self.line)
             self.line = None
 
@@ -147,16 +148,16 @@ class MainScene(QGraphicsScene):
                 arrow.setZValue(-1000.0)
                 self.addItem(arrow)
                 arrow.update_position()
-                
+
                 # 连接箭头释放后进行传值
-                end_item.calculateResult(end_item.item_type, 
+                end_item.calculateResult(end_item.item_type,
                                          start_item.getOutputNum()+end_item.getInputNum())
 
         self.line = None
         super(MainScene, self).mouseReleaseEvent(mouseEvent)
-        
+
     # 是否可选项发生改变
     def is_item_change(self, type):
         for item in self.selectedItems():
-                return True
+            return True
         return False
