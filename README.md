@@ -3,10 +3,10 @@
 
 <p align="center">
     <img src="https://badgen.net/github/license/lgc0208/simulationDemo/">
-    <img src="https://badgen.net/github/commits/lgc0208/simulationDemo/main/">
+    <img src="https://badgen.net/github/commits/lgc0208/simulationDemo/master/">
     <img src="https://badgen.net/github/releases/lgc0208/simulationDemo/">    
-    <img src="https://badgen.net/github/release/lgc0208/simulationDemo">
-    <img src="https://badgen.net/github/last-commit/lgc0208/simulationDemo/main/">
+    <img src="https://badgen.net/github/release/lgc0208/simulationDemo/">
+    <img src="https://badgen.net/github/last-commit/lgc0208/simulationDemo/master/">
 </p>
 
 ## 目录
